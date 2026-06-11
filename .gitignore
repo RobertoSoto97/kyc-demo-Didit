@@ -1,0 +1,54 @@
+# --- OS & Temporary Files ---
+.DS_Store
+Thumbs.db
+*.swp
+*.log
+.fuse_hidden*
+.directory
+.Trash-*
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.iml
+*.iws
+.classpath
+.project
+.settings/
+.nb-gradle/
+*.sublime-project
+*.sublime-workspace
+
+# --- Environment & Secrets ---
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+*.cert
+
+# --- Frontend (Node.js/Vite) ---
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/build/
+frontend/coverage/
+frontend/.eslintcache
+frontend/*.tsbuildinfo
+
+# --- Backend (Maven/Spring Boot) ---
+backend/target/
+backend/*.jar
+backend/*.war
+backend/*.ear
+backend/bin/
+backend/.factorypath
+backend/build/
+
+# --- Docker ---
+.docker/
+
+# --- Other Tools ---
+.ngrok2/
