@@ -1,17 +1,18 @@
 package com.kycdemo.service;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 /**
  * Servicio actualizado para la API v3 de Didit.
@@ -32,6 +33,9 @@ public class DiditService {
 
     @Value("${didit.api-url}")
     private String apiUrl;
+
+    @Value("${didit.callback-url:}")
+    private String callbackUrl;
 
     private final HttpClient httpClient = HttpClient.newHttpClient();
     private final ObjectMapper mapper = new ObjectMapper();
@@ -58,6 +62,10 @@ public class DiditService {
         
         // Solo añadir callback si tuviéramos una URL real
         // bodyNode.put("callback", "https://tudominio.com/gracias");
+        
+        if (callbackUrl != null && !callbackUrl.isBlank()) {
+            bodyNode.put("callback", callbackUrl);
+        }
 
         String body = mapper.writeValueAsString(bodyNode);
 

@@ -16,6 +16,7 @@ didit:
   client-id: ${DIDIT_CLIENT_ID}
   api-key: ${DIDIT_API_KEY}
   workflow-id: ${DIDIT_WORKFLOW_ID}
+  callback-url: ${DIDIT_CALLBACK_URL:}
   # Nueva URL de la API de Verificación v3
   api-url: https://verification.didit.me
 
